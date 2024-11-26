@@ -1,0 +1,6 @@
+path: ../datasets
+train: train/
+val: val/
+test: test/
+nc: 6
+names: ['Prediabetic_State', 'Parkinson_Disease', 'Health', 'Diabetes_Mellitus_Type_2', 'Attention_Deficit_Disorder_with_Hyperactivity', 'Autism_Spectrum_Disorder']
