@@ -2,3 +2,4 @@ gene_txt_folder
 fastq_folder
 datasets
 output_dir
+*.pt
