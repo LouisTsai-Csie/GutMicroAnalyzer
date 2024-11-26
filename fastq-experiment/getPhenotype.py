@@ -45,8 +45,19 @@ def get_associated_runs(meshID: str, experiment_type: str | None) -> list[str]:
     #         return run_id_list
 
     if experiment_type != None:
-        run_id_list = [(run["run_id"], run["nr_reads_sequenced"]) for run in query_response if run["experiment_type"] == experiment_type]
-    else:
+        if meshID in ["D006262", "D003924", "D011236", "D010300"]:
+            scales = [i * 10000 for i in range(3, 101)] # at most 300MB
+            for scale in scales:
+                return_flag = False
+                run_id_list = [(run["run_id"], run["nr_reads_sequenced"]) for run in query_response if (run["experiment_type"] == experiment_type and run["nr_reads_sequenced"] != None and run["nr_reads_sequenced"] <= scale)]
+                if len(run_id_list) > 100 or scale == 1000000:
+                    return_flag = True
+                if return_flag:
+                    return run_id_list
+            # run_id_list = [(run["run_id"], run["nr_reads_sequenced"]) for run in query_response if run["experiment_type"] == experiment_type]
+        else:
+            run_id_list = [(run["run_id"], run["nr_reads_sequenced"]) for run in query_response if run["experiment_type"] == experiment_type]
+    else:   
         run_id_list = [(run["run_id"], run["nr_reads_sequenced"]) for run in query_response]
     return run_id_list
 
@@ -54,9 +65,17 @@ if __name__ == "__main__":
     # experiment_type
     experiment_type = "Amplicon" # "Amplicon" or "Metagenomics"
     # 11 phenotypes
-    target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Alzheimer Disease", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2",
-                        "Prediabetic State", "Cognitive Dysfunction", "Depression", "Coronary Artery Disease", "Parkinson Disease", "Kidney Diseases"]
-    
+    # target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Alzheimer Disease", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2",
+    #                     "Prediabetic State", "Cognitive Dysfunction", "Depression", "Coronary Artery Disease", "Parkinson Disease", "Kidney Diseases"]
+    target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2", "Prediabetic State", "Parkinson Disease"]
+
+    # Health: D006262
+    # Autism Spectrum Disorder: D000067877 (V)
+    # Attention Deficit Disorder with Hyperactivity: D001289 (V)
+    # Diabetes Mellitus, Type 2: D003924
+    # Prediabetic State: D011236
+    # Parkinson Disease: D010300
+
     disease_runID_dict = dict()
     disease_to_meshID = get_diseases_to_meshID(target_phenotype_list)
 
@@ -66,5 +85,5 @@ if __name__ == "__main__":
         print(f"Number of runs for {key}: {len(disease_runID_dict[key])}")
     
     # dict to json
-    with open('disease_runID_amplicon.json', 'w') as f:
+    with open('disease_runID_ampn.json', 'w') as f:
         json.dump(disease_runID_dict, f, indent=4)
