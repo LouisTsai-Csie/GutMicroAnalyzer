@@ -5,10 +5,10 @@ import subprocess
 from tqdm import tqdm
 if not os.path.exists('fastq_folder'):
     os.makedirs('fastq_folder')
-with open('disease_runID_amp_300MB.json', 'r') as f:
+with open('disease_runID_amplicon.json', 'r') as f:
     disease_runID_dict = json.load(f)
 
-target_phenotype_list = ["Parkinson Disease", "Health","Diabetes Mellitus, Type 2","Prediabetic State"] 
+target_phenotype_list = ["Stomach Neoplasms"] 
 
 for disease, run_ids in disease_runID_dict.items():
     if disease not in target_phenotype_list:
