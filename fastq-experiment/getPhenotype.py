@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # 11 phenotypes
     # target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Alzheimer Disease", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2",
     #                     "Prediabetic State", "Cognitive Dysfunction", "Depression", "Coronary Artery Disease", "Parkinson Disease", "Kidney Diseases"]
-    target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2", "Prediabetic State", "Parkinson Disease","Stomach Neoplasms"]
+    target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2", "Prediabetic State", "Parkinson Disease","Stomach Neoplasms","Arthritis, Rheumatoid", "Bipolar Disorder"]
 
     # Health: D006262
     # Autism Spectrum Disorder: D000067877 
