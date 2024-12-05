@@ -8,11 +8,11 @@ if not os.path.exists('fastq_folder'):
 with open('disease_runID_amplicon.json', 'r') as f:
     disease_runID_dict = json.load(f)
 
-target_phenotype_list = ["Stomach Neoplasms"] 
+# target_phenotype_list = ["Arthritis, Rheumatoid", "Bipolar Disorder"] 
 
 for disease, run_ids in disease_runID_dict.items():
-    if disease not in target_phenotype_list:
-        continue
+    # if disease not in target_phenotype_list:
+    #     continue
     # eleminate space and comma in disease name
     disease = disease.replace(" ", "_").replace(",", "")
     if not os.path.exists(f'fastq_folder/{disease}'):
