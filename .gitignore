@@ -1,5 +1,5 @@
 gene_txt_folder
+gene_txt_folder_base
 fastq_folder
 datasets
-output_dir
-*.pt
+datasets_base

@@ -67,14 +67,15 @@ if __name__ == "__main__":
     # 11 phenotypes
     # target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Alzheimer Disease", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2",
     #                     "Prediabetic State", "Cognitive Dysfunction", "Depression", "Coronary Artery Disease", "Parkinson Disease", "Kidney Diseases"]
-    target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2", "Prediabetic State", "Parkinson Disease"]
+    target_phenotype_list = ["Health", "Autism Spectrum Disorder", "Attention Deficit Disorder with Hyperactivity", "Diabetes Mellitus, Type 2", "Prediabetic State", "Parkinson Disease","Stomach Neoplasms","Arthritis, Rheumatoid", "Bipolar Disorder"]
 
     # Health: D006262
-    # Autism Spectrum Disorder: D000067877 (V)
-    # Attention Deficit Disorder with Hyperactivity: D001289 (V)
+    # Autism Spectrum Disorder: D000067877 
+    # Attention Deficit Disorder with Hyperactivity: D001289 
     # Diabetes Mellitus, Type 2: D003924
     # Prediabetic State: D011236
     # Parkinson Disease: D010300
+
 
     disease_runID_dict = dict()
     disease_to_meshID = get_diseases_to_meshID(target_phenotype_list)
@@ -85,5 +86,5 @@ if __name__ == "__main__":
         print(f"Number of runs for {key}: {len(disease_runID_dict[key])}")
     
     # dict to json
-    with open('disease_runID_ampn.json', 'w') as f:
+    with open('disease_runID_amplicon.json', 'w') as f:
         json.dump(disease_runID_dict, f, indent=4)

@@ -34,24 +34,29 @@ def deal_seq(txt_file, png_file):
 
 if __name__ == "__main__":
     relative_dataset_path = "../YOLO-experiment/datasets"
+    # transfer_type_root_list = ["gene_txt_folder/Arthritis_Rheumatoid", "gene_txt_folder/Bipolar_Disorder"]
     if not os.path.exists(relative_dataset_path):
         os.makedirs(relative_dataset_path)
     # make train, test, val folders
-    for folder in ["train", "test", "val"]:
+    # for folder in ["train", "test", "val"]:
+    for folder in ["train", "test"]:
         folder_path = os.path.join(relative_dataset_path, folder)
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
     for root, dirs, files in os.walk("gene_txt_folder"):
         count = 0
+        # if root not in transfer_type_root_list:
+        #     continue
         for i, file in enumerate(tqdm(files)):
             if not file.endswith(".txt"):
                 continue
             txt_file = os.path.join(root, file)
             upper_folder = os.path.basename(os.path.dirname(txt_file))
-            if count % 10 < 2:
+            # if count % 10 < 2:
+            if count % 10 < 3:
                 relative_dir = os.path.join(relative_dataset_path, "test", upper_folder)
-            elif count % 10 < 4:
-                relative_dir = os.path.join(relative_dataset_path, "val", upper_folder)
+            # elif count % 10 < 4:
+            #     relative_dir = os.path.join(relative_dataset_path, "val", upper_folder)
             else:
                 relative_dir = os.path.join(relative_dataset_path, "train", upper_folder)
             if not os.path.exists(relative_dir):
