@@ -3,3 +3,4 @@ gene_txt_folder_base
 fastq_folder
 datasets
 datasets_base
+activations_debug.log
