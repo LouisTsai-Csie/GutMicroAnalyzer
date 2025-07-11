@@ -35,4 +35,9 @@ Please run the following python3 code in `anaconda evo2-env`
    8. `gene_seq_len.json` & `gene_txt_seq_len.py`: analysis of gene seqs
 2. evo2-experiment
    1. `retrieve_evo2.py`: get retrieved info (embedded info) from `evo2`
+   2. `decoder.py`: train decoder to perform classification tasks on the embedded infos
+   3. `visualization.py`: show visualization results of the retrieved embedded info
 3. YOLO-experiment (TO BE DEPRECATED)
+
+# Note
+1. nvidia-smi 顯示 3426MiB /  24564MiB 時，還是跑不動

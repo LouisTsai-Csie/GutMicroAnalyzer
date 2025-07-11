@@ -7,7 +7,7 @@ CHECKPOINT_PATH = "checkpoint.pt"
 CHECKPOINT_EVERY = 10
 
 device = 'cuda:0'
-evo2_model = Evo2('evo2_7b').to(device)
+evo2_model = Evo2('evo2_7b')
 layer_name = 'blocks.28.mlp.l3'
 
 def retrieve_gene(base_dir: str):
